@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星屑の標本箱 - マツバ×イヨリ作品集</title>
+    <meta name="description" content="マツバ×イヨリの、甘く残酷な愛の記録。">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="background-overlay"></div>
+    <div class="noise"></div>
+    <div class="magic-circle"></div>
+
+    <header>
+        <div class="subtitle">COLLECTED WORKS</div>
+        <h1>星屑の標本箱</h1>
+        <div class="subtitle-japanese">― マツバ × イヨリ ―</div>
+        <div class="subtitle">STARRING MATSUBA & IYORI</div>
+        <nav class="nav-links">
+            <a href="index.html">TOP</a>
+            <a href="character.html">CHARACTER</a>
+            <a href="list.html">ARCHIVE</a>
+        </nav>
+        <div class="header-decoration"></div>
+    </header>
+
+    <main>
+        <section class="novel-container">
+            <h2 class="section-title">Log Archive</h2>
+
+            <div class="work-list">
+                <article class="work-item">
+                    <div class="work-status">HOT</div>
+                    <div class="work-info">
+                        <h3><a href="hoshi_no_shirabe.html">星屑の調べ：花開く夜の悦楽</a></h3>
+                        <p class="work-desc">古都エンジュの静寂の中、マツバの千里眼に暴かれ、蹂躙されるイヨリ。星と花が交わり、溶け合う夜の記録。</p>
+                    </div>
+                </article>
+                <div class="log-divider"></div>
+
+                <article class="work-item">
+                    <div class="work-status completed">COMPLETED</div>
+                    <div class="work-info">
+                        <h3><a href="astral_lily.html">アストラル・リリィ</a></h3>
+                        <p class="work-desc">若き日の二人が、初めて結ばれた夜の追憶。純白の百合が星屑に染まる。</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2026 STELLAR FLOWER / STARRING MATSUBA & IYORI.
+    </footer>
+
+    <div class="snow-container"></div>
+    <script>
+        // 雪の生成
+        const snowContainer = document.querySelector('.snow-container');
+        for (let i = 0; i < 50; i++) {
+            const snow = document.createElement('div');
+            snow.className = 'snow';
+            snow.style.left = Math.random() * 100 + 'vw';
+            snow.style.animationDuration = Math.random() * 3 + 2 + 's';
+            snow.style.opacity = Math.random();
+            snow.style.width = snow.style.height = Math.random() * 5 + 2 + 'px';
+            snowContainer.appendChild(snow);
+        }
+
+        document.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
+            const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
+            document.querySelector('.background-overlay').style.transform = `translate(${moveX}px, ${moveY}px) scale(1.1)`;
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,524 @@
+:root {
+    --bg-color: #08081a;
+    /* 深夜の静寂 */
+    --panel-bg: rgba(10, 10, 25, 0.9);
+    --accent-gold: #e4d3a2;
+    /* 行灯の柔らかな光 */
+    --accent-purple: #4b0082;
+    /* マツバの紫 */
+    --accent-flower: #f8c3cd;
+    /* 桜色、あるいは散る花びら */
+    --text-color: #e6e6e6;
+    --text-dim: #707080;
+    --glass-border: rgba(228, 211, 162, 0.15);
+    --shoji-line: rgba(228, 211, 162, 0.05);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Outfit:wght@300;400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: default;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Noto Serif JP', serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+    background-image:
+        linear-gradient(rgba(8, 8, 26, 0.9), rgba(8, 8, 26, 0.9)),
+        repeating-linear-gradient(90deg, var(--shoji-line) 0, var(--shoji-line) 1px, transparent 1px, transparent 60px),
+        repeating-linear-gradient(0deg, var(--shoji-line) 0, var(--shoji-line) 1px, transparent 1px, transparent 60px);
+}
+
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1547746411-903dfa72a088?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+    /* エンジュを彷彿とさせる月夜の森 */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+    z-index: -1;
+}
+
+.noise {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48ZmlsdGVyIGlkPSJuIj48ZmVUdXJidWJsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNjUiIG51bU9jdGF2ZXM9IjMiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjbikiIG9wYWNpdHk9IjAuMDUiLz48L3N2Zz4=');
+    pointer-events: none;
+    z-index: 1000;
+}
+
+header {
+    padding: 3rem 1rem;
+    text-align: center;
+    position: relative;
+    border-bottom: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-links {
+    margin-top: 1rem;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.2rem;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.nav-links a:hover {
+    color: var(--accent-gold);
+    border-bottom: 1px solid var(--accent-gold);
+}
+
+h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 0.2rem;
+    color: var(--accent-gold);
+    text-shadow: 0 0 20px rgba(243, 229, 171, 0.4);
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
+    color: var(--text-dim);
+}
+
+.subtitle-japanese {
+    font-size: 0.8rem;
+    letter-spacing: 0.3rem;
+    color: var(--accent-gold);
+    margin-top: -0.5rem;
+    opacity: 0.7;
+}
+
+.header-decoration {
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+    margin-top: 1rem;
+}
+
+main {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+.novel-container {
+    background: var(--panel-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 4px;
+    padding: 4rem;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.novel-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent-purple), var(--accent-gold), transparent);
+}
+
+.chapter-title {
+    font-size: 1.8rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    color: var(--text-color);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 1rem;
+}
+
+.novel-content {
+    line-height: 2.2;
+    font-size: 1.15rem;
+    text-align: justify;
+    word-break: break-all;
+}
+
+.novel-content p {
+    margin-bottom: 2rem;
+    text-indent: 1em;
+}
+
+.novel-content p:first-child {
+    text-indent: 0;
+}
+
+.novel-content p:first-of-type::first-letter {
+    font-size: 3.5rem;
+    float: left;
+    margin-right: 0.8rem;
+    color: var(--accent-purple);
+    line-height: 1;
+    font-weight: 700;
+    text-shadow: 2px 2px 0px var(--accent-gold);
+}
+
+footer {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-dim);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
+}
+
+.magic-circle {
+    position: fixed;
+    bottom: -150px;
+    right: -150px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(243, 229, 171, 0.05) 0%, transparent 70%);
+    border: none;
+    z-index: -1;
+    animation: pulse 10s ease-in-out infinite;
+}
+
+.magic-circle::before {
+    content: '✦';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--accent-gold);
+    font-size: 20rem;
+    opacity: 0.03;
+    filter: blur(5px);
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.6;
+        transform: scale(1.1);
+    }
+}
+
+/* ポータルサイト用スタイル */
+.portal-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.main-visual {
+    height: 300px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.main-visual::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, var(--shoji-line) 0%, transparent 70%);
+    animation: rotate 60s linear infinite;
+}
+
+.visual-text {
+    z-index: 1;
+}
+
+.tagline {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.5rem;
+    color: var(--accent-gold);
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(228, 211, 162, 0.3);
+}
+
+.summary {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: var(--text-dim);
+}
+
+.section-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.3rem;
+    border-left: 3px solid var(--accent-purple);
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+}
+
+.update-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.update-list li {
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.date {
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-dim);
+    width: 100px;
+}
+
+.category {
+    font-size: 0.7rem;
+    padding: 0.1rem 0.5rem;
+    border-radius: 2px;
+}
+
+.category.novel {
+    background: var(--accent-purple);
+    color: white;
+}
+
+.update-list a {
+    color: var(--accent-gold);
+    text-decoration: none;
+}
+
+.update-list a:hover {
+    text-decoration: underline;
+}
+
+.info-content {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: var(--text-dim);
+}
+
+/* 作品一覧用スタイル */
+.work-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    text-align: left;
+}
+
+.work-item {
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    position: relative;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.work-item:hover {
+    transform: translateX(10px);
+    border-color: var(--accent-gold);
+}
+
+.work-status {
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    background: linear-gradient(45deg, var(--accent-flower), var(--accent-gold));
+    color: #050a15;
+    font-weight: 700;
+    font-size: 0.7rem;
+    padding: 0.2rem 1rem;
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: 0.1rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(223, 178, 244, 0.3);
+}
+
+.work-status.completed {
+    background: #a0d8ef;
+}
+
+.work-info h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.work-info h3 a {
+    color: var(--accent-gold);
+    text-decoration: none;
+}
+
+.work-desc {
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    text-indent: 0 !important;
+}
+
+
+/* 追加：雪の粒子 */
+.snow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.snow {
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+.log-divider {
+    width: 50px;
+    height: 1px;
+    background: var(--glass-border);
+    margin: 1rem auto;
+    position: relative;
+}
+
+.log-divider::after {
+    content: '✦';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.6rem;
+    color: var(--accent-gold);
+}
+
+@media (max-width: 600px) {
+    .novel-container {
+        padding: 2rem 1.5rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .work-item {
+        padding: 1.5rem;
+    }
+
+    .work-item:hover {
+        transform: none;
+    }
+}
+
+/* キャラクター紹介用スタイル */
+.character-card {
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.char-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.char-role {
+    font-size: 0.7rem;
+    font-family: 'Outfit', sans-serif;
+    color: white;
+    background: var(--accent-purple);
+    padding: 0.1rem 0.6rem;
+    letter-spacing: 0.1rem;
+    border-radius: 2px;
+}
+
+.char-name {
+    font-size: 1.8rem;
+    color: var(--accent-gold);
+}
+
+.char-age {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    margin-left: 0.5rem;
+}
+
+.char-desc {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--text-dim);
+}
+
+.char-desc p {
+    text-indent: 0 !important;
+}
+
+@media (max-width: 600px) {
+    .char-header {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
