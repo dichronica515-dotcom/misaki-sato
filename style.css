@@ -43,11 +43,11 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('https://images.unsplash.com/photo-1522648485144-849409408aee?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-    /* 白い花々の幻想的なボケ */
+    background: url('iyori_bg.png');
+    /* イヨリを彷彿とさせる百合と桜の聖域 */
     background-size: cover;
     background-position: center;
-    opacity: 0.15;
+    opacity: 0.25;
     filter: grayscale(30%) brightness(1.1);
     z-index: -1;
 }
