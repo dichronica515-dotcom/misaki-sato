@@ -454,24 +454,6 @@ footer {
     color: var(--accent-gold);
 }
 
-@media (max-width: 600px) {
-    .novel-container {
-        padding: 2rem 1.5rem;
-    }
-
-    h1 {
-        font-size: 2rem;
-    }
-
-    .work-item {
-        padding: 1.5rem;
-    }
-
-    .work-item:hover {
-        transform: none;
-    }
-}
-
 /* キャラクター紹介用スタイル */
 .character-card {
     text-align: left;
@@ -516,9 +498,71 @@ footer {
     text-indent: 0 !important;
 }
 
+/* モバイル最適化 */
 @media (max-width: 600px) {
+    header {
+        padding: 2rem 1rem;
+    }
+
+    main {
+        padding: 1rem;
+        margin: 1rem auto;
+    }
+
+    .novel-container {
+        padding: 2rem 1.2rem;
+    }
+
+    .novel-content {
+        font-size: 1rem;
+        line-height: 1.8;
+        letter-spacing: 0.05rem;
+    }
+
+    .novel-content p {
+        margin-bottom: 1.2rem;
+    }
+
+    .novel-content p:first-of-type::first-letter {
+        font-size: 2.8rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+        letter-spacing: 0.1rem;
+    }
+
+    .chapter-title {
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+    }
+
+    .nav-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-links a {
+        font-size: 0.8rem;
+        letter-spacing: 0.1rem;
+    }
+
+    .work-item {
+        padding: 1.5rem;
+    }
+
+    .work-item:hover {
+        transform: none;
+    }
+
     .char-header {
         flex-direction: column;
         gap: 0.5rem;
+        align-items: flex-start;
+    }
+
+    .char-name {
+        font-size: 1.5rem;
     }
 }
